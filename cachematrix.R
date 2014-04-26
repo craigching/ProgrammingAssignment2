@@ -19,6 +19,13 @@ makeCacheMatrix <- function(x = matrix()) {
     # Intialize the cached value
     m <- NULL
 
+    # A function to reset the data
+    # structure to a new matrix value
+    set <- function(y) {
+        x <<- y
+        m <<- NULL
+    }
+
     # A function to get the given matrix
     get <- function() x
 
@@ -30,7 +37,7 @@ makeCacheMatrix <- function(x = matrix()) {
 
     # Return our data structure as a list, binding the
     # above functions to it
-    list(get = get,
+    list(set = set, get = get,
          setinverse = setinverse,
          getinverse = getinverse)
 }
